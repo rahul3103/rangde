@@ -4,7 +4,6 @@
   "private": true,
   "homepage": "https://rahul3103.github.io/rangde",
   "dependencies": {
-    "localstoragedb": "^2.3.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0"
   },
