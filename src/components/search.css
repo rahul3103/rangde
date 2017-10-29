@@ -3,7 +3,25 @@
   width: 100%;
   /*text-align: center;*/
 }
+ul, li {
+  list-style: none;
+}
+.main ul {
+  text-align: left;
+  overflow: hidden;
+  width: 80%;
+  display: table;
+  padding: 0;
+  margin: 54px auto 16px;
+}
 
+li.search.input-wrapper {
+  width: 40%;
+  float: left;
+}
+.search li {
+  display: inline-block;
+}
 .input-icon{
   position: absolute;
   left: 8px;
@@ -34,11 +52,11 @@ input::-webkit-search-cancel-button {
 input[type=search] {
   border: solid 1px #ccc;
   padding: 9px 10px 9px 32px;
-  width: 420px;
+  width: 320px;
   
-  -webkit-border-radius: 10em;
-  -moz-border-radius: 10em;
-  border-radius: 10em;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
   
   -webkit-transition: all .5s;
   -moz-transition: all .5s;
@@ -46,7 +64,7 @@ input[type=search] {
 }
 
 input[type=search]:focus {
-  width: 500px;
+  width: 350px;
   background-color: #fff;
   border-color: #66CC75;
   
@@ -67,8 +85,10 @@ input::-webkit-input-placeholder {
 }
 
 @media screen and (max-width: 600px) {
-  input[type=search] {
-    width: 70%;
+  li.search.input-wrapper {
+    width: 100%;
+    float: none;
+    margin-bottom: 30px;
   }
   input[type=search]:focus {
     width: 70%;
