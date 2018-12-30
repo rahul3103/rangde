@@ -7,4 +7,4 @@ Make sure you have -
 
 ### Also hosted at
 
-* http://rangde.surge.sh/
+* https://rahul3103.github.io/rangde/
