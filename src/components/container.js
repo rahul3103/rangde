@@ -20,7 +20,7 @@ class Container extends Component {
 
   componentWillMount() {
     const self = this;
-    fetch('http://starlord.hackerearth.com/gamesarena').then(function(response) {
+    fetch('https://demo2837922.mockable.io/').then(function(response) {
       const contentType = response.headers.get("content-type");
       if(contentType && contentType.includes("application/json")) {
         return response.json();
