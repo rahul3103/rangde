@@ -8,7 +8,9 @@
     "react-dom": "^16.0.0"
   },
   "devDependencies": {
-    "gh-pages": "^1.0.0",
+    "deploy": "gh-pages -d build",
+    "gh-pages": "^2.0.1",
+    "predeploy": "npm run build",
     "react-scripts": "1.0.14"
   },
   "scripts": {
@@ -16,6 +18,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "deploy" : "npm run build&&gh-pages -d build"
+    "deploy": "npm run build&&gh-pages -d build"
   }
 }
