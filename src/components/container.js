@@ -4,22 +4,15 @@ import SearchBar from './search';
 import './container.css';
 
 class Container extends Component {
-  constructor(props) {
-    super(props);
-        
-    this.state = {
+    state = {
       games: [],
       toggle: true,
       start: 0,
       end: 0
     };
-    this.gameSearch = this.gameSearch.bind(this);
-    this.gameFilter = this.gameFilter.bind(this);
-    this.handleOnScroll = this.handleOnScroll.bind(this);
-  }
 
-  componentWillMount() {
-    const self = this;
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleOnScroll);
     fetch('https://demo2837922.mockable.io/gamesarena').then(function(response) {
       const contentType = response.headers.get("content-type");
       if(contentType && contentType.includes("application/json")) {
@@ -30,7 +23,7 @@ class Container extends Component {
         const games = json.slice(1);
         const start = 0;
         const end = games.length >= 10 ? 9 : games.length - 1;
-        self.setState({
+        this.setState({
           games,
           start,
           end
@@ -39,15 +32,11 @@ class Container extends Component {
     }).catch(function(error) { console.log(error); });
   }
 
-  componentDidMount() {
-    window.addEventListener('scroll', this.handleOnScroll);
-  }
-
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleOnScroll);
   }
 
-  handleOnScroll() {
+  handleOnScroll = () => {
     const scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
     const scrollHeight = (document.documentElement && document.documentElement.scrollHeight) || document.body.scrollHeight;
     const clientHeight = document.documentElement.clientHeight || window.innerHeight;
@@ -64,7 +53,7 @@ class Container extends Component {
     }
   }
 
-  gameSearch(term) {
+  gameSearch = (term) => {
     const fullgames = JSON.parse(localStorage.getItem('games'))
     if (term.length > 0) {
       const games = fullgames.filter(game => game.title.match(new RegExp('\\b'+ term + '.*','i')));
@@ -81,7 +70,7 @@ class Container extends Component {
     }
   }
 
-  gameFilter(term) {
+  gameFilter = (term) => {
     const fullgames = JSON.parse(localStorage.getItem('games'))
     let games = []
     if (term === 'All') {
@@ -102,7 +91,7 @@ class Container extends Component {
     });
   }
 
-  sortBy(e) {
+  sortBy = (e) => {
     if (this.state.toggle) {
       this.setState({games: this.state.games.sort(function(a, b) {
         return a[e] === b[e] ? 0 : +(a[e] < b[e]) || -1;
